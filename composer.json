@@ -1,0 +1,44 @@
+{
+    "name": "vitalyoborin/symfony-kafka-transport",
+    "description": "Kafka transport for symfony/messenger",
+    "keywords": ["kafka", "symfony", "messenger", "transport", "queue"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "VO\\KafkaTransport\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { "VO\\KafkaTransport\\Tests\\": "tests/" }
+    },
+    "authors": [
+        {
+            "name": "Vitaly Oborin",
+            "email": "vitaminych@gmail.com"
+        }
+    ],
+    "scripts": {
+        "tests": "vendor/bin/simple-phpunit tests",
+        "cs-fix": "vendor/bin/php-cs-fixer fix -v",
+        "cs":"vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "8.*",
+        "ext-json": "*",
+        "symfony/config": "^6.1",
+        "symfony/dependency-injection": "^6.1",
+        "symfony/http-kernel": "^6.1",
+        "symfony/messenger": "^6.1"
+    },
+    "suggest": {
+        "ext-rdkafka": "^4.0; Needed to support Kafka connectivity"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.13",
+        "symfony/framework-bundle": "^6.1",
+        "symfony/serializer": "^6.1",
+        "symfony/phpunit-bridge": "^6.1"
+    }
+}

@@ -1,0 +1,8 @@
+*.lock
+package.xml
+/vendor
+.idea
+composer.lock
+/.php-cs-fixer.cache
+.DS_Store
+/.php_cs.cache
