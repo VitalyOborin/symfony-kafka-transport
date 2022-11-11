@@ -12,7 +12,7 @@ interface KafkaMessageInterface
 
     public function getBody(): array;
 
-    public function getOffset(): int;
+    // public function getOffset(): int;
 
-    public function getTimestamp(): int;
+    // public function getTimestamp(): int;
 }

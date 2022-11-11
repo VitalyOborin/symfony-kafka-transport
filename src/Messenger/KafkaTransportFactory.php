@@ -14,7 +14,7 @@ use function in_array;
 
 class KafkaTransportFactory implements TransportFactoryInterface
 {
-    public const SCHEMA = 'rdkafka';
+    public const SCHEMA = 'rdkafka://';
 
     public function __construct(protected LoggerInterface $logger, protected ?SerializerInterface $serializer = null)
     {
@@ -32,7 +32,7 @@ class KafkaTransportFactory implements TransportFactoryInterface
             array_map(
                 fn ($host) => str_starts_with(
                     $host,
-                    self::SCHEMA . '://'
+                    self::SCHEMA
                 ),
                 explode(',', $dsn)
             ),

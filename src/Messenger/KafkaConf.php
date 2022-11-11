@@ -20,7 +20,7 @@ class KafkaConf
         private readonly SerializerInterface $serializer,
         private readonly LoggerInterface $logger
     ) {
-        $this->dsn = str_replace(KafkaTransportFactory::SCHEMA . '://', '', $dsn);
+        $this->dsn = str_replace(KafkaTransportFactory::SCHEMA, '', $dsn);
     }
 
     public function getTopicName(): string

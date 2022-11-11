@@ -6,9 +6,9 @@
     <services>
         <service id="VO\KafkaTransport\Messenger\KafkaJsonSerializer" class="VO\KafkaTransport\Messenger\KafkaJsonSerializer" />
         <service id="VO\KafkaTransport\Messenger\KafkaTransportFactory" class="VO\KafkaTransport\Messenger\KafkaTransportFactory" public="false">
-            <tag name="messenger.transport_factory"/>
-            <argument type="service" id="logger" on-invalid="null"/>
-            <argument type="service" id="VO\KafkaTransport\Messenger\KafkaJsonSerializer" on-invalid="null"/>
+            <tag name="messenger.transport_factory" />
+            <argument type="service" id="logger" on-invalid="null" />
+            <argument type="service" id="VO\KafkaTransport\Messenger\KafkaJsonSerializer" on-invalid="null" />
         </service>
     </services>
 </container>

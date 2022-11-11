@@ -8,6 +8,8 @@ use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\MessageDecodingFailedException;
 use Symfony\Component\Messenger\Stamp\NonSendableStampInterface;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
+use Symfony\Component\Messenger\Stamp\SerializerStamp;
+use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 
 use const JSON_UNESCAPED_UNICODE;
 
@@ -30,7 +32,8 @@ class KafkaJsonSerializer implements SerializerInterface
             $encodedEnvelope['timestamp'],
         );
 
-        return new Envelope($message);
+        return (new Envelope($message))
+            ->with(new SerializerStamp(['topic' => $encodedEnvelope['topic']]));
     }
 
     public function encode(Envelope $envelope): array
