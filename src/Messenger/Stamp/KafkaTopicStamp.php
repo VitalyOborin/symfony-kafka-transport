@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace VO\KafkaTransport\Messenger\Stamp;
 
-use Symfony\Component\Messenger\Stamp\NonSendableStampInterface;
+use Symfony\Component\Messenger\Stamp\StampInterface;
 
-class KafkaTopicStamp implements NonSendableStampInterface
+class KafkaTopicStamp implements StampInterface
 {
     public function __construct(private readonly string $topic)
     {

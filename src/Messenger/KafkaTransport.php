@@ -4,32 +4,18 @@ declare(strict_types=1);
 
 namespace VO\KafkaTransport\Messenger;
 
-use LogicException;
-use RdKafka\KafkaConsumer as Consumer;
-use RdKafka\Producer;
-use RdKafka\Topic;
 use Symfony\Component\Messenger\Envelope;
-use Symfony\Component\Messenger\Stamp\TransportMessageIdStamp;
-use Symfony\Component\Messenger\Transport\Serialization\PhpSerializer;
-use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-
-use const LOG_DEBUG;
-use const RD_KAFKA_PARTITION_UA;
-use const RD_KAFKA_RESP_ERR__PARTITION_EOF;
-use const RD_KAFKA_RESP_ERR__TIMED_OUT;
 
 class KafkaTransport implements TransportInterface
 {
     private readonly KafkaConsumer $consumer;
     private readonly KafkaProducer $producer;
     private readonly KafkaConf $conf;
-    private SerializerInterface $serializer;
 
     public function __construct(KafkaConf $conf)
     {
         $this->conf = $conf;
-        $this->serializer = $conf->getSerializer();
     }
 
     /**

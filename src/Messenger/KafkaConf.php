@@ -23,6 +23,11 @@ class KafkaConf
         $this->dsn = str_replace(KafkaTransportFactory::SCHEMA, '', $dsn);
     }
 
+    public function getTransportName(): string
+    {
+        return $this->options['transport_name'];
+    }
+
     public function getTopicName(): string
     {
         return $this->options['topic'];
@@ -71,7 +76,7 @@ class KafkaConf
     {
         $consumerConf = new Conf();
         $consumerConf->set('bootstrap.servers', $this->dsn);
-        $consumerConf->set('group.id', 'grousdfsdf'); // $this->options['group_id']
+        $consumerConf->set('group.id', $this->options['group_id']);
         $consumerConf->set('enable.partition.eof', 'true');
         $consumerConf->set('auto.offset.reset', 'earliest');
         $consumerConf->set('log_level', (string)LOG_DEBUG);

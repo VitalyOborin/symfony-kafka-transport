@@ -9,6 +9,7 @@ use RdKafka\Topic;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Sender\SenderInterface;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
+use VO\KafkaTransport\Messenger\Stamp\KafkaTopicStamp;
 
 class KafkaProducer implements SenderInterface
 {
@@ -25,6 +26,7 @@ class KafkaProducer implements SenderInterface
 
     public function send(Envelope $envelope): Envelope
     {
+        $envelope = $envelope->with(new KafkaTopicStamp($this->topic->getName()));
         $encodedMessage = $this->serializer->encode($envelope);
 
         // $this->topic->produce(RD_KAFKA_PARTITION_UA, 0, $encodedMessage['body'], $encodedMessage['key']);

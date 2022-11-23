@@ -52,3 +52,6 @@ services:
 * Реализация настроект Kafka для топиков и для подключения через options
 * Работа с header
 * Работа с SSL, авторизация в Kafka
+
+## Другие реализации
+[KonstantinCodes/messenger-kafka](https://github.com/KonstantinCodes/messenger-kafka)
